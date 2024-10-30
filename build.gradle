@@ -1,0 +1,33 @@
+group 'com.thoughtworks.codepairing'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+        events "passed", "skipped", "failed"
+    }
+}
+application {
+    mainClassName = "com.thoughtworks.codepairing.SampleApp"
+}
+
